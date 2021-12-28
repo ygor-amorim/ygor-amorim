@@ -1,6 +1,8 @@
-- 👋 Hi, I’m @ygwr
-- 👀 I’m interested in I DONT KNOW YET
-- 🌱 I’m currently learning... everything from zero
+# Hi, i'm Ygor Rocha! Welcome to my profile!
+
+PT/EN /
+Currently studying Python 
+
 
 <!---
 ygwr/ygwr is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
