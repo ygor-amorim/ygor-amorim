@@ -1,7 +1,7 @@
 # Hi, i'm Ygor Rocha! Welcome to my profile!
 
 PT/EN /
-Currently studying Python 
+Currently studying Python and Javascript (NodeJs)
 
 
 <!---
