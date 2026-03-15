@@ -11,7 +11,7 @@
 
   <!-- label -->
   <text x="24" y="22"
-    font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="9" fill="#4a3a12">
+    font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="9" fill="#8b949e">
     // currently building
   </text>
 
@@ -19,27 +19,27 @@
   <text x="24" y="42"
     font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="12" fill="#e8a735">pi-agent</text>
   <text x="98" y="42"
-    font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="12" fill="#30363d"> · </text>
+    font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="12" fill="#8b949e"> · </text>
   <text x="114" y="42"
     font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="12" fill="#e8a735">portaria</text>
   <text x="182" y="42"
-    font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="12" fill="#30363d"> · </text>
+    font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="12" fill="#8b949e"> · </text>
   <text x="198" y="42"
     font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="12" fill="#e8a735">twitter-agent</text>
 
   <!-- stack -->
   <text x="24" y="60"
-    font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="9" fill="#30363d">
+    font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="9" fill="#8b949e">
     Node.js · TypeScript · React · PostgreSQL · Docker · Raspberry Pi
   </text>
 
   <!-- right: substack teaser -->
   <text x="776" y="35" text-anchor="end"
-    font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="9" fill="#4a3a12">
+    font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="9" fill="#8b949e">
     // words
   </text>
   <text x="776" y="50" text-anchor="end"
-    font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10" fill="#a07020">
+    font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10" fill="#e8a735">
     radinhodepilha
   </text>
 
