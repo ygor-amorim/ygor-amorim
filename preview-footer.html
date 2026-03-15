@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0d1117; font-family: 'SF Mono','Fira Code',Consolas,monospace; padding: 40px; color: #c9d1d9; }
+  h2 { color: #4a3a12; font-size: 11px; letter-spacing: 0.15em; margin: 40px 0 16px; }
+  h2:first-child { margin-top: 0; }
+  .graph { display: block; width: 100%; max-width: 800px; }
+  .divider { width: 100%; max-width: 800px; height: 1px; background: #21262d; margin: 8px 0; }
+
+  /* ── A: badge row ───────────────────────────────────────────── */
+  .badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; max-width: 800px; padding: 14px 0; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 10px; border-radius: 4px; font-size: 11px;
+    text-decoration: none; letter-spacing: 0.04em;
+  }
+  .badge svg { width: 13px; height: 13px; flex-shrink: 0; }
+  .badge-blue  { border: 1px solid #1f6feb; color: #58a6ff; }
+  .badge-amber { border: 1px solid #e8a735; color: #e8a735; }
+  .badge-dim   { border: 1px solid #30363d; color: #8b949e; }
+
+  /* ── C: HTML table ──────────────────────────────────────────── */
+  .info-table { width: 100%; max-width: 800px; border-collapse: collapse; }
+  .info-table td { padding: 6px 12px; font-size: 11px; border-bottom: 1px solid #161b22; }
+  .info-table td:first-child { color: #e8a735; text-align: right; width: 110px; white-space: nowrap; }
+  .info-table td:last-child  { color: #8b949e; }
+  .info-table td:last-child span { color: #58a6ff; }
+
+  /* ── D: SVG strip ───────────────────────────────────────────── */
+  .strip-wrap { width: 100%; max-width: 800px; }
+</style>
+</head>
+<body>
+
+<!-- shared graph on top -->
+<img src="graph.svg" class="graph" alt="ecosystem"/>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     OPTION A + C  —  badge row  +  HTML table
+     ══════════════════════════════════════════════════════════════ -->
+<h2>// option A + C — badge row + table</h2>
+
+<!-- A: badges -->
+<div class="badges">
+  <!-- links -->
+  <a class="badge badge-blue" href="#">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12.5C24 5.87 18.63.5 12 .5z"/></svg>
+    ygor-amorim
+  </a>
+  <a class="badge badge-blue" href="#">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    linkedin
+  </a>
+  <a class="badge badge-dim" href="#">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    @handle
+  </a>
+  <!-- focus -->
+  <span style="color:#30363d;font-size:11px;padding:0 4px">·</span>
+  <a class="badge badge-amber" href="#">pi-agent</a>
+  <a class="badge badge-amber" href="#">portaria</a>
+  <a class="badge badge-amber" href="#">twitter-agent</a>
+</div>
+
+<!-- C: table -->
+<table class="info-table">
+  <tr>
+    <td>building</td>
+    <td><span>pi-agent</span> · autonomous code review on raspberry pi 5</td>
+  </tr>
+  <tr>
+    <td>also</td>
+    <td><span>portaria</span> · event credentials · commercial</td>
+  </tr>
+  <tr>
+    <td>stack</td>
+    <td><span>Node.js</span> · TypeScript · React · Postgres · Docker</td>
+  </tr>
+</table>
+
+<div style="height:48px"></div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     OPTION A + D  —  badge row  +  SVG strip
+     ══════════════════════════════════════════════════════════════ -->
+<h2>// option A + D — badge row + SVG strip</h2>
+
+<!-- A: badges (same) -->
+<div class="badges">
+  <a class="badge badge-blue" href="#">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12.5C24 5.87 18.63.5 12 .5z"/></svg>
+    ygor-amorim
+  </a>
+  <a class="badge badge-blue" href="#">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    linkedin
+  </a>
+  <a class="badge badge-dim" href="#">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    @handle
+  </a>
+</div>
+
+<!-- D: SVG strip -->
+<div class="strip-wrap">
+<svg viewBox="0 0 800 72" xmlns="http://www.w3.org/2000/svg" width="100%">
+  <defs>
+    <pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40,0 L0,0 L0,40" fill="none" stroke="#161b22" stroke-width="0.8"/>
+    </pattern>
+    <style>
+      @keyframes scan { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+      .scanline { animation: scan 6s linear infinite; }
+    </style>
+  </defs>
+  <rect width="800" height="72" fill="#0d1117"/>
+  <rect width="800" height="72" fill="url(#grid2)" opacity="0.3"/>
+  <!-- top separator line -->
+  <line x1="0" y1="0" x2="800" y2="0" stroke="#1f6feb" stroke-width="0.5" opacity="0.4"/>
+  <!-- scanline shimmer -->
+  <rect class="scanline" x="0" y="0" width="200" height="72"
+    fill="url(#scan-grad)" opacity="0.03"/>
+  <!-- left: focus -->
+  <text x="24" y="24" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="9" fill="#4a3a12">// currently building</text>
+  <text x="24" y="44" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="11" fill="#e8a735">pi-agent</text>
+  <text x="88" y="44" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="11" fill="#30363d"> · </text>
+  <text x="102" y="44" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="11" fill="#e8a735">portaria</text>
+  <text x="166" y="44" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="11" fill="#30363d"> · </text>
+  <text x="180" y="44" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="11" fill="#e8a735">twitter-agent</text>
+  <!-- stack tags -->
+  <text x="24" y="61" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="9" fill="#30363d">Node.js · TypeScript · React · Postgres · Docker · Raspberry Pi</text>
+  <!-- right: links -->
+  <a href="#">
+    <text x="620" y="30" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10" fill="#1f6feb">github</text>
+  </a>
+  <line x1="660" y1="22" x2="660" y2="36" stroke="#21262d" stroke-width="1"/>
+  <a href="#">
+    <text x="668" y="30" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10" fill="#1f6feb">linkedin</text>
+  </a>
+  <line x1="714" y1="22" x2="714" y2="36" stroke="#21262d" stroke-width="1"/>
+  <a href="#">
+    <text x="722" y="30" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10" fill="#8b949e">x</text>
+  </a>
+</svg>
+</div>
+
+<div style="height:48px"></div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     OPTION C + D  —  HTML table  +  SVG strip
+     ══════════════════════════════════════════════════════════════ -->
+<h2>// option C + D — table + SVG strip</h2>
+
+<!-- C: table -->
+<table class="info-table">
+  <tr>
+    <td>building</td>
+    <td><span>pi-agent</span> · autonomous code review on raspberry pi 5</td>
+  </tr>
+  <tr>
+    <td>also</td>
+    <td><span>portaria</span> · event credentials · commercial</td>
+  </tr>
+  <tr>
+    <td>stack</td>
+    <td><span>Node.js</span> · TypeScript · React · Postgres · Docker</td>
+  </tr>
+</table>
+
+<div style="height:12px"></div>
+
+<!-- D: SVG strip (links version) -->
+<div class="strip-wrap">
+<svg viewBox="0 0 800 52" xmlns="http://www.w3.org/2000/svg" width="100%">
+  <defs>
+    <pattern id="grid3" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40,0 L0,0 L0,40" fill="none" stroke="#161b22" stroke-width="0.8"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="52" fill="#0d1117"/>
+  <rect width="800" height="52" fill="url(#grid3)" opacity="0.3"/>
+  <line x1="0" y1="0" x2="800" y2="0" stroke="#e8a735" stroke-width="0.5" opacity="0.25"/>
+  <line x1="0" y1="51" x2="800" y2="51" stroke="#1f6feb" stroke-width="0.5" opacity="0.2"/>
+  <!-- centered link row -->
+  <text x="400" y="20" text-anchor="middle"
+    font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="9" fill="#4a3a12">// reach me</text>
+  <a href="#"><text x="290" y="38" text-anchor="middle" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="11" fill="#58a6ff">github</text></a>
+  <text x="330" y="38" text-anchor="middle" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="11" fill="#21262d">·</text>
+  <a href="#"><text x="370" y="38" text-anchor="middle" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="11" fill="#58a6ff">linkedin</text></a>
+  <text x="415" y="38" text-anchor="middle" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="11" fill="#21262d">·</text>
+  <a href="#"><text x="450" y="38" text-anchor="middle" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="11" fill="#8b949e">x</text></a>
+  <text x="480" y="38" text-anchor="middle" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="11" fill="#21262d">·</text>
+  <a href="#"><text x="524" y="38" text-anchor="middle" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="11" fill="#8b949e">email</text></a>
+</svg>
+</div>
+
+</body>
+</html>
