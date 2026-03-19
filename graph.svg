@@ -1,206 +1,243 @@
-<svg viewBox="0 0 800 540" xmlns="http://www.w3.org/2000/svg" width="800">
+<svg viewBox="0 0 800 460" xmlns="http://www.w3.org/2000/svg" width="800">
   <defs>
     <style>
-      @keyframes float-a { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-3px); } }
-      @keyframes float-b { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-2px); } }
-      @keyframes float-d { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-2px); } }
-      @keyframes float-e { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-3px); } }
-      @keyframes float-f { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-2.5px); } }
-      @keyframes dash-managed  { from { stroke-dashoffset: 200; } to { stroke-dashoffset: 0; } }
-      @keyframes dash-satellite { from { stroke-dashoffset: 150; } to { stroke-dashoffset: 0; } }
-      @keyframes orbit-glow    { 0%,100% { opacity: 0.18; } 50% { opacity: 0.32; } }
-      @keyframes self-orbit {
-        0%   { transform: translate(515px, 200px) scale(1.05); opacity: 1;   }
-        12%  { transform: translate(492px, 164px) scale(0.95); opacity: 0.7; }
-        25%  { transform: translate(400px, 148px) scale(0.82); opacity: 0;   }
-        35%  { transform: translate(336px, 161px) scale(0.78); opacity: 0;   }
-        50%  { transform: translate(285px, 200px) scale(0.80); opacity: 0;   }
-        65%  { transform: translate(336px, 239px) scale(0.88); opacity: 0.4; }
-        75%  { transform: translate(400px, 252px) scale(1.00); opacity: 0.9; }
-        88%  { transform: translate(492px, 236px) scale(1.05); opacity: 1;   }
-        100% { transform: translate(515px, 200px) scale(1.05); opacity: 1;   }
-      }
-      .node-core   { animation: float-a 3.2s ease-in-out infinite; }
-      .node-tw     { animation: float-b 3.8s ease-in-out infinite 0.5s; }
-      .node-unico  { animation: float-d 3.5s ease-in-out infinite 0.3s; }
-      .node-port   { animation: float-e 4.4s ease-in-out infinite 0.7s; }
-      .node-ge     { animation: float-f 3.9s ease-in-out infinite 1.3s; }
-      .node-geapi  { animation: float-a 3.6s ease-in-out infinite 0.9s; }
-      .node-rpi    { animation: float-b 4.2s ease-in-out infinite 0.2s; }
-      .edge-managed  { animation: dash-managed  1.4s linear infinite; }
-      .edge-sat-1    { animation: dash-satellite 3.0s linear infinite; }
-      .edge-sat-2    { animation: dash-satellite 3.5s linear infinite 0.6s; }
-      .edge-sat-3    { animation: dash-satellite 2.8s linear infinite 1.1s; }
-      .edge-sat-4    { animation: dash-satellite 3.2s linear infinite 0.4s; }
-      .edge-sat-5    { animation: dash-satellite 4.0s linear infinite 0.9s; }
-      .orbit-ring    { animation: orbit-glow 4s ease-in-out infinite; }
-      .node-self {
-        animation: self-orbit 9s linear infinite;
-        transform-box: fill-box;
-        transform-origin: 0 0;
-      }
+      @keyframes fl-a { 0%,100%{transform:translateY(0)}   50%{transform:translateY(-3px)}   }
+      @keyframes fl-b { 0%,100%{transform:translateY(0)}   50%{transform:translateY(-2px)}   }
+      @keyframes fl-c { 0%,100%{transform:translateY(0)}   50%{transform:translateY(-4px)}   }
+      @keyframes fl-d { 0%,100%{transform:translateY(0)}   50%{transform:translateY(-2.5px)} }
+      @keyframes orb  { 0%,100%{opacity:.10}  50%{opacity:.22} }
+      .n-pia  { animation: fl-c 3.2s ease-in-out infinite; }
+      .n-tw   { animation: fl-a 3.8s ease-in-out infinite .5s; }
+      .n-ge   { animation: fl-b 4.1s ease-in-out infinite .3s; }
+      .n-por  { animation: fl-a 3.5s ease-in-out infinite .8s; }
+      .n-cof  { animation: fl-d 4.4s ease-in-out infinite .2s; }
+      .n-rad  { animation: fl-b 3.9s ease-in-out infinite 1.1s; }
+      .orb-r  { animation: orb  4s   ease-in-out infinite; }
     </style>
-    <filter id="glow-core" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="5" result="b"/>
+
+    <filter id="gc" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="glow-managed" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="b"/>
+    <filter id="gs" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3.5" result="b"/>
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="glow-orbit" x="-40%" y="-80%" width="180%" height="260%">
-      <feGaussianBlur stdDeviation="3" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M40,0 L0,0 L0,40" fill="none" stroke="#161b22" stroke-width="0.8"/>
-    </pattern>
-    <marker id="arr-blue" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-      <path d="M0,1 L0,6 L6,3.5 z" fill="#1f6feb" opacity="0.85"/>
-    </marker>
-    <marker id="arr-amber" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-      <path d="M0,1 L0,6 L6,3.5 z" fill="#e8a735" opacity="0.6"/>
-    </marker>
   </defs>
 
-  <!-- bg -->
-  <rect width="800" height="540" fill="#0d1117"/>
-  <rect width="800" height="540" fill="url(#grid)" opacity="0.3"/>
+  <!-- background -->
+  <rect width="800" height="460" fill="#0d1117"/>
 
-  <!-- header -->
-  <text x="400" y="36" text-anchor="middle"
-    font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="12" fill="#8b949e">
-    // building systems that reduce the distance between idea and running code
-  </text>
+  <!-- stars -->
+  <circle cx="46"  cy="28"  r=".8" fill="#c9935a" opacity=".18"/>
+  <circle cx="124" cy="65"  r=".5" fill="#c9935a" opacity=".13"/>
+  <circle cx="684" cy="42"  r=".9" fill="#c9935a" opacity=".20"/>
+  <circle cx="750" cy="80"  r=".4" fill="#c9935a" opacity=".11"/>
+  <circle cx="38"  cy="132" r=".7" fill="#c9935a" opacity=".16"/>
+  <circle cx="715" cy="165" r=".6" fill="#c9935a" opacity=".14"/>
+  <circle cx="760" cy="318" r=".8" fill="#c9935a" opacity=".22"/>
+  <circle cx="56"  cy="370" r=".5" fill="#c9935a" opacity=".13"/>
+  <circle cx="28"  cy="422" r=".9" fill="#c9935a" opacity=".18"/>
+  <circle cx="748" cy="425" r=".6" fill="#c9935a" opacity=".15"/>
+  <circle cx="654" cy="90"  r=".5" fill="#c9935a" opacity=".12"/>
+  <circle cx="80"  cy="185" r=".4" fill="#c9935a" opacity=".11"/>
+  <circle cx="736" cy="252"  r=".7" fill="#c9935a" opacity=".16"/>
+  <circle cx="492" cy="30"  r=".6" fill="#c9935a" opacity=".14"/>
+  <circle cx="310" cy="36"  r=".8" fill="#c9935a" opacity=".20"/>
+  <circle cx="520" cy="422" r=".5" fill="#c9935a" opacity=".13"/>
+  <circle cx="250" cy="448" r=".7" fill="#c9935a" opacity=".18"/>
+  <circle cx="638" cy="448" r=".4" fill="#c9935a" opacity=".11"/>
+  <circle cx="86"  cy="325" r=".6" fill="#c9935a" opacity=".15"/>
+  <circle cx="714" cy="130" r=".5" fill="#c9935a" opacity=".13"/>
+  <circle cx="38"  cy="280" r=".8" fill="#c9935a" opacity=".19"/>
+  <circle cx="422" cy="448" r=".6" fill="#c9935a" opacity=".14"/>
+  <circle cx="162" cy="422" r=".5" fill="#c9935a" opacity=".12"/>
+  <circle cx="580" cy="22"  r=".7" fill="#c9935a" opacity=".16"/>
+  <circle cx="680" cy="392" r=".5" fill="#c9935a" opacity=".13"/>
 
-  <!-- gestio ↔ gestio-api connector -->
-  <line x1="619" y1="238" x2="619" y2="282"
-    stroke="#e8a735" stroke-width="1" opacity="0.3" stroke-dasharray="2 3"/>
-
-  <!-- orbit ring -->
-  <ellipse cx="400" cy="200" rx="115" ry="52"
-    fill="none" stroke="#1f6feb" stroke-width="1" stroke-dasharray="3 5" class="orbit-ring"/>
-
-  <!-- pulse rings on pi-agent -->
-  <ellipse cx="400" cy="200" fill="none" stroke="#58a6ff" stroke-width="1">
-    <animate attributeName="rx" values="82;115" dur="2.2s" repeatCount="indefinite"/>
-    <animate attributeName="ry" values="34;52"  dur="2.2s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.35;0" dur="2.2s" repeatCount="indefinite"/>
+  <!-- orbit rings -->
+  <ellipse cx="400" cy="228" rx="148" ry="81"
+    fill="none" stroke="#c9935a" stroke-width=".5" stroke-dasharray="2 6" class="orb-r"/>
+  <ellipse cx="400" cy="228" rx="232" ry="128"
+    fill="none" stroke="#c9935a" stroke-width=".5" stroke-dasharray="2 6" class="orb-r">
+    <animate attributeName="opacity" values=".08;.18;.08" dur="5.5s" repeatCount="indefinite" begin="2s"/>
   </ellipse>
-  <ellipse cx="400" cy="200" fill="none" stroke="#58a6ff" stroke-width="1">
-    <animate attributeName="rx" values="82;115" dur="2.2s" begin="1.1s" repeatCount="indefinite"/>
-    <animate attributeName="ry" values="34;52"  dur="2.2s" begin="1.1s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.35;0" dur="2.2s" begin="1.1s" repeatCount="indefinite"/>
+
+  <!-- pulse rings from center -->
+  <ellipse cx="400" cy="228" fill="none" stroke="#c9935a" stroke-width=".9">
+    <animate attributeName="rx" values="72;150"  dur="2.8s" repeatCount="indefinite"/>
+    <animate attributeName="ry" values="30;63"   dur="2.8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values=".28;0" dur="2.8s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="400" cy="228" fill="none" stroke="#c9935a" stroke-width=".9">
+    <animate attributeName="rx" values="72;150"  dur="2.8s" begin="1.4s" repeatCount="indefinite"/>
+    <animate attributeName="ry" values="30;63"   dur="2.8s" begin="1.4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values=".28;0" dur="2.8s" begin="1.4s" repeatCount="indefinite"/>
   </ellipse>
 
-  <!-- managed edge: pi-agent → twitter-agent -->
-  <line x1="400" y1="230" x2="400" y2="384"
-    stroke="#1f6feb" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.65"
-    marker-end="url(#arr-blue)" class="edge-managed"/>
+  <!-- ── EDGES ─────────────────────────────────── -->
 
-  <!-- managed packets -->
-  <circle r="3" fill="#58a6ff">
-    <animateMotion dur="1.4s" repeatCount="indefinite" path="M400,230 L400,384"/>
-    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="1.4s" repeatCount="indefinite"/>
-  </circle>
-  <circle r="3" fill="#58a6ff">
-    <animateMotion dur="1.4s" begin="0.7s" repeatCount="indefinite" path="M400,230 L400,384"/>
-    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="1.4s" begin="0.7s" repeatCount="indefinite"/>
-  </circle>
+  <!-- center → pi-agent -->
+  <line x1="400" y1="219" x2="400" y2="103"
+    stroke="#5b8dd9" stroke-width=".8" stroke-dasharray="3 5" opacity=".45"/>
+  <!-- pi-agent → twitter-agent -->
+  <line x1="407" y1="95"  x2="607" y2="141"
+    stroke="#5b8dd9" stroke-width=".8" stroke-dasharray="3 5" opacity=".45"/>
+  <!-- center → cofrinho -->
+  <line x1="391" y1="221" x2="204" y2="150"
+    stroke="#c9935a" stroke-width=".7" stroke-dasharray="2 5" opacity=".35"/>
+  <!-- center → radinho -->
+  <line x1="390" y1="234" x2="176" y2="280"
+    stroke="#c9935a" stroke-width=".7" stroke-dasharray="2 5" opacity=".35"/>
+  <!-- center → gestio -->
+  <line x1="409" y1="236" x2="593" y2="341"
+    stroke="#c9935a" stroke-width=".7" stroke-dasharray="2 5" opacity=".35"/>
+  <!-- center → portaria -->
+  <line x1="394" y1="238" x2="319" y2="363"
+    stroke="#c9935a" stroke-width=".7" stroke-dasharray="2 5" opacity=".35"/>
 
-  <!-- satellite edges -->
-  <line x1="355" y1="180" x2="258" y2="155" stroke="#e8a735" stroke-width="1" stroke-dasharray="4 5" opacity="0.55" marker-end="url(#arr-amber)" class="edge-sat-1"/>
-  <line x1="450" y1="178" x2="542" y2="135" stroke="#e8a735" stroke-width="1" stroke-dasharray="4 5" opacity="0.55" marker-end="url(#arr-amber)" class="edge-sat-2"/>
-  <line x1="462" y1="198" x2="542" y2="218" stroke="#e8a735" stroke-width="1" stroke-dasharray="4 5" opacity="0.55" marker-end="url(#arr-amber)" class="edge-sat-3"/>
-  <line x1="458" y1="212" x2="542" y2="308" stroke="#e8a735" stroke-width="1" stroke-dasharray="4 5" opacity="0.55" marker-end="url(#arr-amber)" class="edge-sat-4"/>
-  <line x1="338" y1="198" x2="238" y2="260" stroke="#e8a735" stroke-width="1" stroke-dasharray="4 5" opacity="0.55" marker-end="url(#arr-amber)" class="edge-sat-5"/>
+  <!-- ── PARTICLES ──────────────────────────────── -->
 
-  <!-- satellite packets -->
-  <circle r="2" fill="#e8a735">
-    <animateMotion dur="3s" repeatCount="indefinite" path="M355,180 L258,155"/>
-    <animate attributeName="opacity" values="0;0.8;0.8;0" keyTimes="0;0.1;0.85;1" dur="3s" repeatCount="indefinite"/>
+  <!-- center → pi-agent -->
+  <circle r="2" fill="#5b8dd9">
+    <animateMotion dur="1.7s" repeatCount="indefinite" path="M400,219 L400,103"/>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.05;.9;1" dur="1.7s" repeatCount="indefinite"/>
   </circle>
-  <circle r="2" fill="#e8a735">
-    <animateMotion dur="3.5s" begin="0.6s" repeatCount="indefinite" path="M450,178 L542,135"/>
-    <animate attributeName="opacity" values="0;0.8;0.8;0" keyTimes="0;0.1;0.85;1" dur="3.5s" begin="0.6s" repeatCount="indefinite"/>
-  </circle>
-  <circle r="2" fill="#e8a735">
-    <animateMotion dur="2.8s" begin="1.1s" repeatCount="indefinite" path="M462,198 L542,218"/>
-    <animate attributeName="opacity" values="0;0.8;0.8;0" keyTimes="0;0.1;0.85;1" dur="2.8s" begin="1.1s" repeatCount="indefinite"/>
-  </circle>
-  <circle r="2" fill="#e8a735">
-    <animateMotion dur="3.2s" begin="0.4s" repeatCount="indefinite" path="M458,212 L542,308"/>
-    <animate attributeName="opacity" values="0;0.8;0.8;0" keyTimes="0;0.1;0.85;1" dur="3.2s" begin="0.4s" repeatCount="indefinite"/>
-  </circle>
-  <circle r="2" fill="#e8a735">
-    <animateMotion dur="4s" begin="0.9s" repeatCount="indefinite" path="M338,198 L238,260"/>
-    <animate attributeName="opacity" values="0;0.8;0.8;0" keyTimes="0;0.1;0.85;1" dur="4s" begin="0.9s" repeatCount="indefinite"/>
+  <circle r="2" fill="#5b8dd9">
+    <animateMotion dur="1.7s" begin=".85s" repeatCount="indefinite" path="M400,219 L400,103"/>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.05;.9;1" dur="1.7s" begin=".85s" repeatCount="indefinite"/>
   </circle>
 
-  <!-- ── NODES ── -->
+  <!-- pi-agent → twitter-agent -->
+  <circle r="1.8" fill="#e8a020">
+    <animateMotion dur="2.1s" repeatCount="indefinite" path="M400,95 L613,142"/>
+    <animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.05;.9;1" dur="2.1s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="1.8" fill="#e8a020">
+    <animateMotion dur="2.1s" begin="1.05s" repeatCount="indefinite" path="M400,95 L613,142"/>
+    <animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.05;.9;1" dur="2.1s" begin="1.05s" repeatCount="indefinite"/>
+  </circle>
 
-  <!-- pi-agent (core) -->
-  <g class="node-core" filter="url(#glow-core)">
-    <rect x="320" y="168" width="160" height="60" rx="8" fill="#0d1117" stroke="#58a6ff" stroke-width="1.5"/>
-    <text text-anchor="middle" x="400" y="189" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="14" fill="#58a6ff" font-weight="600">pi-agent</text>
-    <text text-anchor="middle" x="400" y="206" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10" fill="#8b949e">autonomous · self-managing</text>
-    <text text-anchor="middle" x="400" y="220" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="9"  fill="#388bfd">raspberry pi 5</text>
+  <!-- center → cofrinho -->
+  <circle r="1.8" fill="#5a8c9a">
+    <animateMotion dur="2.9s" begin=".4s" repeatCount="indefinite" path="M400,228 L196,148"/>
+    <animate attributeName="opacity" values="0;.75;.75;0" keyTimes="0;.08;.88;1" dur="2.9s" begin=".4s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- center → radinho -->
+  <circle r="1.8" fill="#b06848">
+    <animateMotion dur="3.3s" begin="1.2s" repeatCount="indefinite" path="M400,228 L168,278"/>
+    <animate attributeName="opacity" values="0;.75;.75;0" keyTimes="0;.08;.88;1" dur="3.3s" begin="1.2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- center → gestio -->
+  <circle r="1.8" fill="#7a9c5a">
+    <animateMotion dur="2.7s" begin=".7s" repeatCount="indefinite" path="M400,228 L598,344"/>
+    <animate attributeName="opacity" values="0;.75;.75;0" keyTimes="0;.08;.88;1" dur="2.7s" begin=".7s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- center → portaria -->
+  <circle r="1.8" fill="#c4522a">
+    <animateMotion dur="3.1s" begin=".2s" repeatCount="indefinite" path="M400,228 L315,368"/>
+    <animate attributeName="opacity" values="0;.75;.75;0" keyTimes="0;.08;.88;1" dur="3.1s" begin=".2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- ── NODES ─────────────────────────────────── -->
+
+  <!-- center: ygor-amorim (400, 228) — no float, anchor -->
+  <g filter="url(#gc)">
+    <circle cx="400" cy="228" r="26" fill="#c9935a" opacity=".09"/>
+    <circle cx="400" cy="228" r="10" fill="#c9935a"/>
+  </g>
+  <text x="400" y="254" text-anchor="middle"
+    font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="11" font-weight="600" fill="#c9935a"
+  >ygor-amorim</text>
+  <text x="400" y="267" text-anchor="middle"
+    font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="8.5" fill="#6e7681"
+  >builder · lisboa</text>
+
+  <!-- pi-agent (400, 95) -->
+  <g class="n-pia">
+    <g filter="url(#gs)">
+      <circle cx="400" cy="95" r="19" fill="#5b8dd9" opacity=".11"/>
+      <circle cx="400" cy="95" r="7"  fill="#5b8dd9"/>
+    </g>
+    <text x="400" y="117" text-anchor="middle"
+      font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10.5" fill="#5b8dd9"
+    >pi-agent</text>
+    <text x="400" y="129" text-anchor="middle"
+      font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="8" fill="#6e7681"
+    >autonomous · raspberry pi</text>
   </g>
 
-  <!-- ↺ self orbiting node -->
-  <g class="node-self" filter="url(#glow-orbit)">
-    <rect x="-38" y="-13" width="76" height="26" rx="5" fill="#0d1117" stroke="#1f6feb" stroke-width="1"/>
-    <text text-anchor="middle" x="0" y="-1"  font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10" fill="#58a6ff">↺ self</text>
-    <text text-anchor="middle" x="0" y="10" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="8"  fill="#3d6ea8">improving</text>
+  <!-- twitter-agent (613, 142) -->
+  <g class="n-tw">
+    <g filter="url(#gs)">
+      <circle cx="613" cy="142" r="16" fill="#e8a020" opacity=".11"/>
+      <circle cx="613" cy="142" r="6"  fill="#e8a020"/>
+    </g>
+    <text x="633" y="146" text-anchor="start"
+      font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10.5" fill="#e8a020"
+    >twitter-agent</text>
+    <text x="633" y="158" text-anchor="start"
+      font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="8" fill="#6e7681"
+    >voice corpus · auto-posts</text>
   </g>
 
-  <!-- twitter-agent (managed) -->
-  <g class="node-tw" filter="url(#glow-managed)">
-    <rect x="288" y="384" width="224" height="62" rx="7" fill="#0d1117" stroke="#1f6feb" stroke-width="1.5"/>
-    <circle cx="303" cy="400" r="3.5" fill="#1f6feb"/>
-    <text text-anchor="middle" x="400" y="403" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="13" fill="#e6edf3" font-weight="500">twitter-agent</text>
-    <text text-anchor="middle" x="400" y="419" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10" fill="#8b949e">voice corpus · autonomous posting</text>
-    <text text-anchor="middle" x="400" y="437" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="9"  fill="#388bfd">X · Node.js · Playwright</text>
+  <!-- gestio (598, 344) -->
+  <g class="n-ge">
+    <g filter="url(#gs)">
+      <circle cx="598" cy="344" r="15" fill="#7a9c5a" opacity=".11"/>
+      <circle cx="598" cy="344" r="5.5" fill="#7a9c5a"/>
+    </g>
+    <text x="617" y="348" text-anchor="start"
+      font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10.5" fill="#7a9c5a"
+    >gestio</text>
+    <text x="617" y="360" text-anchor="start"
+      font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="8" fill="#6e7681"
+    >property · react · ts</text>
   </g>
 
-  <!-- unico -->
-  <g class="node-unico">
-    <rect x="108" y="120" width="152" height="56" rx="6" fill="#161b22" stroke="#e8a735" stroke-width="1" opacity="0.75"/>
-    <text text-anchor="middle" x="184" y="140" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="13" fill="#c9d1d9">unico</text>
-    <text text-anchor="middle" x="184" y="156" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10" fill="#8b949e">labour-time tracking</text>
-    <text text-anchor="middle" x="184" y="169" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="9"  fill="#a07020">worker cooperative</text>
+  <!-- portaria (315, 368) -->
+  <g class="n-por">
+    <g filter="url(#gs)">
+      <circle cx="315" cy="368" r="15" fill="#c4522a" opacity=".11"/>
+      <circle cx="315" cy="368" r="5.5" fill="#c4522a"/>
+    </g>
+    <text x="315" y="390" text-anchor="middle"
+      font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10.5" fill="#c4522a"
+    >portaria</text>
+    <text x="315" y="402" text-anchor="middle"
+      font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="8" fill="#6e7681"
+    >event credentials</text>
   </g>
 
-  <!-- portaria -->
-  <g class="node-port">
-    <rect x="540" y="100" width="158" height="56" rx="6" fill="#161b22" stroke="#e8a735" stroke-width="1" opacity="0.75"/>
-    <text text-anchor="middle" x="619" y="120" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="13" fill="#c9d1d9">portaria</text>
-    <text text-anchor="middle" x="619" y="136" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10" fill="#8b949e">event credentials</text>
-    <text text-anchor="middle" x="619" y="149" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="9"  fill="#a07020">commercial · R$6k/yr</text>
+  <!-- cofrinho (196, 148) -->
+  <g class="n-cof">
+    <g filter="url(#gs)">
+      <circle cx="196" cy="148" r="14" fill="#5a8c9a" opacity=".11"/>
+      <circle cx="196" cy="148" r="5.5" fill="#5a8c9a"/>
+    </g>
+    <text x="177" y="152" text-anchor="end"
+      font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10.5" fill="#5a8c9a"
+    >cofrinho-api</text>
+    <text x="177" y="164" text-anchor="end"
+      font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="8" fill="#6e7681"
+    >finance · node.js</text>
   </g>
 
-  <!-- gestio -->
-  <g class="node-ge">
-    <rect x="540" y="188" width="158" height="56" rx="6" fill="#161b22" stroke="#e8a735" stroke-width="1" opacity="0.75"/>
-    <text text-anchor="middle" x="619" y="208" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="13" fill="#c9d1d9">gestio</text>
-    <text text-anchor="middle" x="619" y="224" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10" fill="#8b949e">property management</text>
-    <text text-anchor="middle" x="619" y="237" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="9"  fill="#a07020">React · TypeScript</text>
-  </g>
-
-  <!-- gestio-api -->
-  <g class="node-geapi">
-    <rect x="540" y="282" width="158" height="56" rx="6" fill="#161b22" stroke="#e8a735" stroke-width="1" opacity="0.75"/>
-    <text text-anchor="middle" x="619" y="302" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="13" fill="#c9d1d9">gestio-api</text>
-    <text text-anchor="middle" x="619" y="318" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10" fill="#8b949e">REST · Docker · Pi</text>
-    <text text-anchor="middle" x="619" y="331" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="9"  fill="#a07020">Node.js · Postgres</text>
-  </g>
-
-  <!-- raspberrypi -->
-  <g class="node-rpi">
-    <rect x="60" y="240" width="178" height="56" rx="6" fill="#161b22" stroke="#e8a735" stroke-width="1" opacity="0.75"/>
-    <text text-anchor="middle" x="149" y="260" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="13" fill="#c9d1d9">raspberrypi</text>
-    <text text-anchor="middle" x="149" y="276" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10" fill="#8b949e">home automation hub</text>
-    <text text-anchor="middle" x="149" y="289" font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="9"  fill="#a07020">Pi-hole · HA · Tailscale</text>
+  <!-- radinho (168, 278) -->
+  <g class="n-rad">
+    <g filter="url(#gs)">
+      <circle cx="168" cy="278" r="14" fill="#b06848" opacity=".11"/>
+      <circle cx="168" cy="278" r="5.5" fill="#b06848"/>
+    </g>
+    <text x="150" y="282" text-anchor="end"
+      font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="10.5" fill="#b06848"
+    >radinho</text>
+    <text x="150" y="294" text-anchor="end"
+      font-family="'SF Mono','Fira Code',Consolas,monospace" font-size="8" fill="#6e7681"
+    >newsletter · substack</text>
   </g>
 
 </svg>
